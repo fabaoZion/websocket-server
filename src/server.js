@@ -27,7 +27,7 @@ io.on("connection", (socket) => {
     const userNumber = Math.floor(Math.random() * 100) + 1;
 
     axios.get('https://us-central1-serveless-survey-api.cloudfunctions.net/api/survey').then(r =>
-        io.emit("connStatus", r.data)
+        io.emit("load surveys", r.data)
     ).catch(e => console.log(e));
 
     socket.on("load surveys", (msg) => {
